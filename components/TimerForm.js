@@ -26,8 +26,14 @@ class TimerForm extends Component {
     this.setState({ project });
   };
 
+  handleSubmit = () => {
+    const { id, onFormSubmit } = this.props;
+    const { title, project } = this.state;
+    onFormSubmit({ id, title, project });
+  };
+
   render() {
-    const { id } = this.props;
+    const { id, onFormClose } = this.props;
     const { title, project } = this.state;
     const submitText = id ? "Atualizar" : "Criar";
 
@@ -58,8 +64,18 @@ class TimerForm extends Component {
         </View>
 
         <View style={styles.buttonGroup}>
-          <TimerButton small color="#21ba45" title={submitText} />
-          <TimerButton small color="#db2828" title="Cancelar" />
+          <TimerButton
+            small
+            color="#21ba45"
+            title={submitText}
+            onPress={this.handleSubmit}
+          />
+          <TimerButton
+            small
+            color="#db2828"
+            title="Cancelar"
+            onPress={onFormClose}
+          />
         </View>
       </View>
     );
