@@ -38,8 +38,11 @@ class EditableTimer extends Component {
       project,
       elapsed,
       isRunning,
-      onRemovePress
+      onRemovePress,
+      onStartPress,
+      onStopPress
     } = this.props;
+
     const { editFormOpen } = this.state;
 
     if (editFormOpen) {
@@ -63,6 +66,8 @@ class EditableTimer extends Component {
         isRunning={isRunning}
         onEditPress={this.handleEditPress}
         onRemovePress={onRemovePress}
+        onStartPress={onStartPress}
+        onStopPress={onStopPress}
       />
     );
   }

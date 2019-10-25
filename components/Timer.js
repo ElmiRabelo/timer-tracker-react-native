@@ -15,6 +15,38 @@ class Timer extends Component {
     onRemovePress(id);
   };
 
+  handleStartPress = () => {
+    const { id, onStartPress } = this.props;
+    onStartPress(id);
+  };
+
+  handleStopPress = () => {
+    const { id, onStopPress } = this.props;
+    onStopPress(id);
+  };
+
+  handleActionButton = () => {
+    const { isRunning } = this.props;
+
+    if (isRunning) {
+      return (
+        <TimerButton
+          color="#DB2828"
+          title="Pausar"
+          onPress={this.handleStopPress}
+        />
+      );
+    }
+
+    return (
+      <TimerButton
+        color="#21BA45"
+        title="Começar"
+        onPress={this.handleStartPress}
+      />
+    );
+  };
+
   render() {
     const { title, project, elapsed, onEditPress } = this.props;
     const elapsedString = millisecondsToHuman(elapsed);
@@ -37,7 +69,7 @@ class Timer extends Component {
             onPress={this.handleRemovePress}
           />
         </View>
-        <TimerButton color="#21BA45" title="Começar" />
+        {this.handleActionButton()}
       </View>
     );
   }
