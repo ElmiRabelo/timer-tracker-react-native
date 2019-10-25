@@ -1,11 +1,22 @@
 import React, { Component } from "react";
-
 import { View, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 import TimerButton from "./TimerButton";
 import { millisecondsToHuman } from "../utils/TimerUtils";
 
 class Timer extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    project: PropTypes.string.isRequired,
+    elapsed: PropTypes.number.isRequired,
+    isRunning: PropTypes.bool.isRequired,
+    onFormSubmit: PropTypes.func.isRequired,
+    onRemovePress: PropTypes.func.isRequired,
+    onStartPress: PropTypes.func.isRequired,
+    onStopPress: PropTypes.func.isRequired
+  };
   constructor(props) {
     super(props);
   }

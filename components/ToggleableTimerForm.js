@@ -7,6 +7,9 @@ import TimerForm from "./TimerForm";
 
 //Renderiza ou um button de adicionar ou um timeform(que aparece após clicar no button) controlado pela prop isOpen
 class ToggleableTimerForm extends Component {
+  static propTypes = {
+    onFormSubmit: PropTypes.func.isRequired
+  };
   constructor(props) {
     super(props);
     this.state = {

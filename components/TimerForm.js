@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 import TimerButton from "./TimerButton";
 
@@ -8,6 +9,19 @@ import TimerButton from "./TimerButton";
 // Component renderiza um form de edição do Timer
 
 class TimerForm extends Component {
+  static propTypes = {
+    id: PropTypes.string,
+    title: PropTypes.string,
+    project: PropTypes.string,
+    onFormSubmit: PropTypes.func.isRequired,
+    onFormClose: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    id: null,
+    title: "",
+    project: ""
+  };
   constructor(props) {
     super(props);
 
