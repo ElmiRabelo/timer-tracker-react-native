@@ -35,6 +35,30 @@ class App extends Component {
     this.setState({ timers: [newTimer(timer), ...timers] });
   };
 
+  handleFormSubmit = attrs => {
+    const { timers } = this.state;
+    this.setState({
+      timers: timers.map(timer => {
+        if (timer.id === attrs.id) {
+          const { title, project } = attrs;
+
+          return {
+            ...timer,
+            title,
+            project
+          };
+        }
+        return timer;
+      })
+    });
+  };
+
+  handleRemovePress = timerId => {
+    this.setState({
+      timers: this.state.timers.filter(timer => timer.id !== timerId)
+    });
+  };
+
   render() {
     const { timers } = this.state;
     return (
@@ -52,6 +76,8 @@ class App extends Component {
               project={project}
               elapsed={elapsed}
               isRunning={isRunning}
+              onFormSubmit={this.handleFormSubmit}
+              onRemovePress={this.handleRemovePress}
             />
           ))}
         </ScrollView>
